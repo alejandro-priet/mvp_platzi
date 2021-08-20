@@ -5,9 +5,9 @@ from models import Feedback, db
 
 app = Flask(__name__)
 
-ENV = 'development'
+ENV = 'prod'
 
-if ENV == 'development':
+if ENV == 'dev':
     POSTGRES = {
         'user': 'postgres',
         'pw': 'a2dejlnor9054',
@@ -27,7 +27,7 @@ else :
     app.config['DEBUG'] = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
-%(pw)s@%(host)s:%(port)s/%(db)s?sslmode=require' % POSTGRES
+%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

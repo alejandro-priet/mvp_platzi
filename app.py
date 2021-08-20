@@ -7,6 +7,8 @@ app = Flask(__name__)
 
 ENV = 'prod'
 
+# Todo : change location of POSTGRES accesss data
+
 if ENV == 'dev':
     POSTGRES = {
         'user': 'postgres',

@@ -36,8 +36,4 @@ class Feedback(BaseModel, db.Model):
     rating = db.Column(db.Integer)
     comments = db.Column(db.Text())
 
-    def __init__(self, customer, dealer, rating, comments):
-        self.customer = customer
-        self.dealer = dealer
-        self.rating = rating
-        self.comments = comments
+

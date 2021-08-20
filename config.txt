@@ -1,0 +1,15 @@
+POSTGRES_DEV = {
+        'user': 'postgres',
+        'pw': 'a2dejlnor9054',
+        'db': 'mvpdb',
+        'host': 'localhost',
+        'port': '5432',
+    }
+
+POSTGRES_PROD = {
+    'user': 'yssnhbufmhvkze',
+    'pw': '8fef3ac8f13467f5123dfa014bcafabc29d5d4113df3c775135277865fb850d8',
+    'db': 'd24dr5l6kfgcbh',
+    'host': 'ec2-34-194-14-176.compute-1.amazonaws.com',
+    'port': '5432',
+}

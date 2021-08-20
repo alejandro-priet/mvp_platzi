@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 ENV = 'prod'
 
-if ENV == 'dev':
+if ENV == 'development':
     POSTGRES = {
         'user': 'postgres',
         'pw': 'a2dejlnor9054',
@@ -34,6 +34,7 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
 
 @app.route('/')
 def index():

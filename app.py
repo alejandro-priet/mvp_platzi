@@ -27,7 +27,7 @@ def create_app():
         %(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
     else :
         app.config['DEBUG'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://yssnhbufmhvkze:8fef3ac8f13467f5123dfa014bcafabc29d5d4113df3c775135277865fb850d8@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d24dr5l6kfgcbh'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://yssnhbufmhvkze:8fef3ac8f13467f5123dfa014bcafabc29d5d4113df3c775135277865fb850d8@ec2-34-194-14-176.compute-1.amazonaws.com:5432/d24dr5l6kfgcbh'
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

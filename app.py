@@ -27,7 +27,7 @@ else :
     app.config['DEBUG'] = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%(user)s:\
-%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+%(pw)s@%(host)s:%(port)s/%(db)s?sslmode=require' % POSTGRES
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

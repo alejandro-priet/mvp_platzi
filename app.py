@@ -4,7 +4,7 @@ from models import Feedback, db
 
 app = Flask(__name__)
 
-ENV = 'development'
+ENV = 'prod'
 
 if ENV == 'development':
     POSTGRES = {

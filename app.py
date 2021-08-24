@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
 from send_mail import send_mail
 from models import Feedback, db
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'development'
 
 if ENV == 'development':
     POSTGRES = {
@@ -16,7 +15,7 @@ if ENV == 'development':
         'port': '5432',
     }
     app.config['DEBUG'] = True
-else :
+else:
     POSTGRES = {
         'user': 'yssnhbufmhvkze',
         'pw': '8fef3ac8f13467f5123dfa014bcafabc29d5d4113df3c775135277865fb850d8',
@@ -41,6 +40,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('home')
+def home():
+    return render_template('home.html')
+
+
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
@@ -58,7 +62,6 @@ def submit():
             send_mail(customer, service, rating, comments)
             return render_template('success.html')
         return render_template('index.html', message='You are alreasy registered')
-
 
 
 if __name__ == '__main__':

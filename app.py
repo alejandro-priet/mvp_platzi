@@ -1,20 +1,14 @@
-from cs50 import SQL
-import os
-from flask.helpers import get_flashed_messages
 from helpers import login_required, lookup, usd
 from tempfile import mkdtemp
-from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, redirect, render_template, request, session, flash
 from flask_session import Session
-from flask_login import current_user, LoginManager
-from send_mail import send_mail
 from models import *
 import re
 
 app = Flask(__name__)
 
-ENV = 'development'
+ENV = 'prod'
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True

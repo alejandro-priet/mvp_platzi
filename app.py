@@ -1,4 +1,4 @@
-from helpers import login_required, lookup, usd
+from helpers import login_required
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, redirect, render_template, request, session, flash

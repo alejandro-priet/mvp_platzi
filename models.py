@@ -4,41 +4,20 @@ import datetime
 db = SQLAlchemy()
 
 
-class BaseModel(db.Model):
-    """Base data model for all objects"""
-    __abstract__ = True
+class Person(db.Model):
+    __tablename__ = 'person'
 
-    def __init__(self, *args):
-        super().__init__(*args)
+    personID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(200), unique=True)
+    email = db.Column(db.Text(), unique=True)
+    password_hash = db.Column(db.Text())
+
+    def __init__(self, username, email, password_hash):
+        self.username = username
+        self.email = email
+        self.password_hash = password_hash
 
     def __repr__(self):
-        """Define a base way to print models"""
-        return '%s(%s)' % (self.__class__.__name__, {
-            column: value
-            for column, value in self._to_dict().items()
-        })
-
-    def json(self):
-        """
-                Define a base way to jsonify models, dealing with datetime objects
-        """
-        return {
-            column: value if not isinstance(value, datetime.date) else value.strftime('%Y-%m-%d')
-            for column, value in self._to_dict().items()
-        }
+        return '{}, {}, {}'.format(self.username, self.password_hash, self.personID)
 
 
-class Feedback(BaseModel, db.Model):
-    __tablename__ = 'feedback'
-    id = db.Column(db.Integer, primary_key=True)
-    customer = db.Column(db.String(200), unique=True)
-    dealer = db.Column(db.String(200))
-    rating = db.Column(db.Integer)
-    comments = db.Column(db.Text())
-
-    def __init__(self, customer, dealer, rating, comments, *args):
-        super().__init__(*args)
-        self.customer = customer
-        self.dealer = dealer
-        self.rating = rating
-        self.comments = comments

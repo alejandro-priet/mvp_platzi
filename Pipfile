@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 gunicorn = "*"
 flask-script-extras = "*"
 flask-migrate = "*"
+flask-session = "*"
 
 [dev-packages]
 

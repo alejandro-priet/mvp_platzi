@@ -157,7 +157,7 @@ def success():
     return render_template('success.html')
 
 
-@app.route('/map', methods=['GET', 'POST'])
+@app.route('/map')
 def mmap():
     return render_template('map.html')
 

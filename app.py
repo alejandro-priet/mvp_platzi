@@ -3,11 +3,17 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, redirect, render_template, request, session, flash
 from flask_session import Session
 from models import *
+import requests
+import urllib
+import urllib.parse
+import urllib.request
+
+import json
 import re
 
 app = Flask(__name__)
 
-ENV = 'prod'
+ENV = 'development'
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -155,6 +161,11 @@ def forgot_password():
 @app.route("/success")
 def success():
     return render_template('success.html')
+
+
+@app.route('/map', methods=['GET', 'POST'])
+def mmap():
+    return render_template('map.html')
 
 
 if __name__ == '__main__':

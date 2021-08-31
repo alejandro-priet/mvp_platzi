@@ -162,5 +162,10 @@ def mmap():
     return render_template('map.html')
 
 
+@app.route('/explore')
+def explore():
+    return render_template('explore.html')
+
+
 if __name__ == '__main__':
     app.run()

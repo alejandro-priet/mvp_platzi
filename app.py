@@ -7,7 +7,7 @@ import re
 
 app = Flask(__name__)
 
-ENV = 'development'
+ENV = 'prod'
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True

@@ -12,10 +12,21 @@ const mobilekit = {
 //-----------------------------------------------------------------------
 if (mobilekit.pwa) {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
+        navigator.serviceWorker.register('static/assets/js/service-worker.js')
             .then(reg => console.log('service worker registered'))
             .catch(err => console.log('service worker not registered - there is an error.', err));
     }
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('static/assets/js/service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
 }
 //-----------------------------------------------------------------------
 

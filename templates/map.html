@@ -14,13 +14,11 @@
     <link rel="icon" type="image/png" href="/static/assets/img/favicon.png" sizes="32x32">
     <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/img/icon/192x192.png">
     <link rel="stylesheet" href="/static/assets/css/style.css">
-    <link rel="manifest" href="__manifest.json">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -167,7 +165,7 @@
                                     <br>
                                     <div class="input-wrapper">
                                         <label class="form-label" for="name5">Max</label>
-                                        <input type="text" class="form-control" id="name5" placeholder="Maximal budget"
+                                        <input type="text" class="form-control" id="name6" placeholder="Maximal budget"
                                             autocomplete="off">
                                         <i class="clear-input">
                                             <ion-icon name="close-circle"></ion-icon>
@@ -201,8 +199,7 @@
 
     <!-- ============== Js Files ==============  -->
     <script>
-		var longitude, latitude;
-
+    var longitude, latitude;
     <!-- ============= Geo Localization ======== -->
         function ipLookUp () {
           $.ajax('http://ip-api.com/json')
@@ -242,8 +239,7 @@
              // for when getting location is a success
              console.log('latitude', position.coords.latitude,
                          'longitude', position.coords.longitude);
-                window.longitude = position.coords.longitude
-                window.latitude = position.coords.latitude
+               // Todo: make latitude and longitude global, because the parameters are missing
 
              getAddress(position.coords.latitude,
                         position.coords.longitude)
@@ -282,7 +278,7 @@
         'This is card footer'+
         '</div>';
 
-        function initAutocomplete() {
+        function initAutocomplete(latitude,longitude) {
           const map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: latitude, lng: longitude },
             zoom: 15,
@@ -294,6 +290,7 @@
               rotateControl: true,
               fullscreenControl: false
           });
+
           // Set LatLng and title text for the markers. The first marker (Boynton Pass)
             // receives the initial focus when tab is pressed. Use arrow keys to
             // move between markers; press tab again to cycle through the map controls.

@@ -18,6 +18,9 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -35,25 +38,25 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="home.html" class="item">
+        <a href="/" class="item">
             <div class="col">
                 <ion-icon name="home-outline"></ion-icon>
             </div>
         </a>
-        <a href="explore.html" class="item">
+        <a href="/discover" class="item">
             <div class="col">
-                <ion-icon name="cube-outline"></ion-icon>
+                <ion-icon name="search-outline"></ion-icon>
             </div>
         </a>
-        <a href="page-chat.html" class="item">
+        <a href="/add_event" class="item">
             <div class="col">
-                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                <ion-icon name="add-circle-outline"></ion-icon>
+            </div>
+        </a>
+        <a href="/notifications" class="item">
+            <div class="col">
+                <ion-icon name="notifications-outline"></ion-icon>
                 <span class="badge badge-danger">5</span>
-            </div>
-        </a>
-        <a href="app-pages.html" class="item">
-            <div class="col">
-                <ion-icon name="layers-outline"></ion-icon>
             </div>
         </a>
         <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
@@ -75,8 +78,8 @@
                         <div class="image-wrapper">
                             <img src="/static/assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
                         </div>
-                        <div class="in">
-                            <strong>Julian Gruber</strong>
+                        <div class="in" >
+                            <strong>{{ username }}</strong>
                             <div class="text-muted">
                                 <ion-icon name="location"></ion-icon>
                                 California
@@ -89,47 +92,6 @@
                     <!-- * profile box -->
 
                     <ul class="listview flush transparent no-line image-listview mt-2">
-                        <li>
-                            <a href="index.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="home-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    Discover
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="app-components.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="cube-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    Components
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="app-pages.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="layers-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    <div>Pages</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="page-chat.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    <div>Chat</div>
-                                    <span class="badge badge-danger">5</span>
-                                </div>
-                            </a>
-                        </li>
                         <li>
                             <div class="item">
                                 <div class="icon-box bg-primary">
@@ -145,69 +107,89 @@
                                 </div>
                             </div>
                         </li>
-                    </ul>
-
                     <div class="listview-title mt-2 mb-1">
-                        <span>Friends</span>
+                        <span>Filters</span>
                     </div>
-                    <ul class="listview image-listview flush transparent no-line">
                         <li>
-                            <a href="page-chat.html" class="item">
-                                <img src="/static/assets/img/sample/avatar/avatar7.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Sophie Asveld</div>
+                        <div>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#accordion1">
+                                    <a class="item">Categories</a>
+                                </button>
+                            </h2>
+                            <div id="accordion1" class="accordion-collapse collapse" data-bs-parent="#accordion1">
+                                <div class="accordion-body">
+                                    <p>Choose some categories</p>
+                                <div class="form-check mb-1">
+                                    <input type="checkbox" class="form-check-input" id="customCheckb1">
+                                    <label class="form-check-label" for="customCheckb1">Sport</label>
                                 </div>
-                            </a>
+                                <div class="form-check mb-1">
+                                    <input type="checkbox" class="form-check-input" id="customCheckb2">
+                                    <label class="form-check-label" for="customCheckb2">Music</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input type="checkbox" class="form-check-input" id="customCheckb3">
+                                    <label class="form-check-label" for="customCheckb3">Food</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input type="checkbox" class="form-check-input" id="customCheckb4">
+                                    <label class="form-check-label" for="customCheckb4">Education</label>
+                                </div>
+                                <div class="form-check mb-1">
+                                    <input type="checkbox" class="form-check-input" id="customCheckb5">
+                                    <label class="form-check-label" for="customCheckb5">Digital</label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                         </li>
                         <li>
-                            <a href="page-chat.html" class="item">
-                                <img src="/static/assets/img/sample/avatar/avatar3.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Sebastian Bennett</div>
-                                    <span class="badge badge-danger">6</span>
+                             <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#accordion2">
+                                    <a class="item">Price</a>
+                                </button>
+                            </h2>
+                            <div id="accordion2" class="accordion-collapse collapse" data-bs-parent="#accordion2">
+                                <div class="accordion-body">
+                                <form>
+                                <div class="form-group boxed mb-1">
+                                    <div class="input-wrapper">
+                                        <label class="form-label" for="name5">Min</label>
+                                        <input type="text" class="form-control" id="name5" placeholder="Minimal budget"
+                                            autocomplete="off">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
+                                    <br>
+                                    <div class="input-wrapper">
+                                        <label class="form-label" for="name5">Max</label>
+                                        <input type="text" class="form-control" id="name5" placeholder="Maximal budget"
+                                            autocomplete="off">
+                                        <i class="clear-input">
+                                            <ion-icon name="close-circle"></ion-icon>
+                                        </i>
+                                    </div>
                                 </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="page-chat.html" class="item">
-                                <img src="/static/assets/img/sample/avatar/avatar10.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Beth Murphy</div>
+                              </form>
                                 </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="page-chat.html" class="item">
-                                <img src="/static/assets/img/sample/avatar/avatar2.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Amelia Cabal</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="page-chat.html" class="item">
-                                <img src="/static/assets/img/sample/avatar/avatar5.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Henry Doe</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                            </div>
 
-                </div>
+                        </li>
+                        <div class="wide-block pt-2 pb-2 bg-transparent">
+                            <button type="button" class="btn btn-primary btn-sm btn-block">BUTTON</button>
+                        </div>
+                    </ul>
 
                 <!-- sidebar buttons -->
                 <div class="sidebar-buttons">
-                    <a href="#" class="button">
+                    <a href="/profile" class="button">
                         <ion-icon name="person-outline"></ion-icon>
                     </a>
-                    <a href="#" class="button">
-                        <ion-icon name="archive-outline"></ion-icon>
-                    </a>
-                    <a href="#" class="button">
-                        <ion-icon name="settings-outline"></ion-icon>
-                    </a>
-                    <a href="#" class="button">
+                    <a href="/logout" class="button">
                         <ion-icon name="log-out-outline"></ion-icon>
                     </a>
                 </div>
@@ -289,27 +271,16 @@
         // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
         const contentString =
-        '<div id="content">' +
-        '<div id="siteNotice">' +
-        "</div>" +
-        '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-        '<div id="bodyContent">' +
-        "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-        "sandstone rock formation in the southern part of the " +
-        "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-        "south west of the nearest large town, Alice Springs; 450&#160;km " +
-        "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-        "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-        "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-        "Aboriginal people of the area. It has many springs, waterholes, " +
-        "rock caves and ancient paintings. Uluru is listed as a World " +
-        "Heritage Site.</p>" +
-        '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-        "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-        "(last visited June 22, 2009).</p>" +
-        "</div>" +
-        "</div>";
-
+        '<div class="card">' +
+        '<div class="card-header">Card Header</div>' +
+        '<div class="card-body">' +
+        '<h5 class="card-title">Title</h5>' +
+        '<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>'+
+        '<a href="#" class="btn btn-primary">Go somewhere</a>'+
+        '</div>'+
+        '<div class="card-footer">'+
+        'This is card footer'+
+        '</div>';
 
         function initAutocomplete() {
           const map = new google.maps.Map(document.getElementById("map"), {
@@ -347,7 +318,7 @@
             // Add a click listener for each marker, and set up the info window.
             marker.addListener("click", () => {
               infoWindow.close();
-              infoWindow.setContent(marker.getTitle() + contentString);
+              infoWindow.setContent(contentString); //marker.getTitle()
               infoWindow.open(marker.getMap(), marker);
             });
             });
@@ -413,7 +384,7 @@
     <!-- Bootstrap -->
     <script src="/static/assets/js/lib/bootstrap.min.js"></script>
     <!-- Ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
     <!-- Splide -->
     <script src="/static/assets/js/plugins/splide/splide.min.js"></script>
     <!-- ProgressBar js -->

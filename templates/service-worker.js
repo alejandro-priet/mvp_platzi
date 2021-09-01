@@ -4,7 +4,7 @@
 //--------------------------------------------------------------------------
 
 // Cache name
-var CACHE_NAME = 'cache-version-1';
+var CACHE_NAME = 'cache-version-2';
 
 // Files
 var REQUIRED_FILES = [

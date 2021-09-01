@@ -36,3 +36,4 @@ Werkzeug==2.0.1
 cs50~=7.0.2
 helpers~=0.2.0
 requests~=2.26.0
+redis~=3.5.3

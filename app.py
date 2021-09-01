@@ -1,7 +1,8 @@
 from helpers import login_required
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import Flask, redirect, render_template, request, session, flash
+from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
+from datetime import timedelta
 from models import *
 import re
 
@@ -16,6 +17,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.permanent_session_lifetime = timedelta(minutes=5)
 Session(app)
 
 
@@ -52,8 +54,10 @@ with app.app_context():
 
 @app.route('/')
 @login_required
-def home():
-    return render_template('home.html')
+def mmap():
+    username = session['username']
+    print(username)
+    return render_template('map.html', username=username)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -128,7 +132,9 @@ def login():
             return render_template("login.html", message='Invalid username or password')
         else:
             # Remember which user has logged in
+            session['username'] = username
             session["user_id"] = personid
+            session.permanent = True
             # Redirect user to home page
             return redirect("/success")
     # User reached route via GET (as by clicking a link or via redirect)
@@ -137,6 +143,7 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout():
     """Log user out"""
     # Forget any user_id
@@ -148,23 +155,38 @@ def logout():
 
 @app.route("/forgot_password")
 def forgot_password():
-    # Todo: add a password resent method
+    # Todo: add a password reset method
     pass
 
 
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html')
+
+
 @app.route("/success")
+@login_required
 def success():
     return render_template('success.html')
 
 
-@app.route('/map')
-def mmap():
-    return render_template('map.html')
+@app.route('/discover')
+@login_required
+def discover():
+    return render_template('discover.html')
 
 
-@app.route('/explore')
-def explore():
-    return render_template('explore.html')
+@app.route('/add_event')
+@login_required
+def add_event():
+    return render_template('add_event.html')
+
+
+@app.route('/notifications')
+@login_required
+def notifications():
+    return render_template('notifications.html')
 
 
 if __name__ == '__main__':

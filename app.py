@@ -13,13 +13,11 @@ ENV = 'development'
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.permanent_session_lifetime = timedelta(minutes=5)
 Session(app)
-
 
 if ENV == 'development':
     POSTGRES = {
@@ -56,7 +54,6 @@ with app.app_context():
 @login_required
 def mmap():
     username = session['username']
-    print(username)
     return render_template('map.html', username=username)
 
 
@@ -136,10 +133,27 @@ def login():
             session["user_id"] = personid
             session.permanent = True
             # Redirect user to home page
-            return redirect("/success")
+            return redirect("/category_selection")
     # User reached route via GET (as by clicking a link or via redirect)
     else:
         return render_template("login.html")
+
+
+@app.route('/category_selection')
+@login_required
+def category_selection():
+    return render_template('category_selection.html')
+
+
+@app.route('/selected_successfully', methods=['GET', 'POST'])
+@login_required
+def selected_successfully():
+    if request.method == 'POST':
+        if request.form.get('sport') is not None:
+            # Todo: set array of multiple category selections and send it to database in a query (maybe a for or direct an array)
+        return redirect('/')
+    else:
+        return redirect('/category_selection')
 
 
 @app.route("/logout")
@@ -162,7 +176,8 @@ def forgot_password():
 @app.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    username = session['username']
+    return render_template('profile.html', username=username)
 
 
 @app.route("/success")
@@ -174,7 +189,8 @@ def success():
 @app.route('/discover')
 @login_required
 def discover():
-    return render_template('discover.html')
+    username = session['username']
+    return render_template('discover.html', username=username)
 
 
 @app.route('/add_event')
@@ -187,6 +203,12 @@ def add_event():
 @login_required
 def notifications():
     return render_template('notifications.html')
+
+
+@app.route('/sidebar')
+@login_required
+def sidebar():
+    return render_template('sidebar.html')
 
 
 if __name__ == '__main__':

@@ -16,7 +16,7 @@ class Person(db.Model):
     username = db.Column(db.String(200), unique=True)
     email = db.Column(db.Text(), unique=True)
     categories = db.relationship('Category', secondary=categories, lazy='subquery',
-                                 backref=db.backref('person', lazy=True))
+                                 backref=db.backref('users', lazy='dynamic'))
     password_hash = db.Column(db.Text())
 
     def __init__(self, username, email, password_hash):

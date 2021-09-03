@@ -1,17 +1,39 @@
     <!-- ============== Js Files ==============  -->
         let longitude, latitude;
         const contentString =
-        '<div class="card">' +
-        '<div class="card-header">Card Header</div>' +
+        '<div class="card" style="background-color:#E6E6FA;">' +
+        '<div class="card-header">Music</div>' +
         '<div class="card-body">' +
-        '<h5 class="card-title">Title</h5>' +
-        '<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>'+
-        '<a href="#" class="btn btn-primary">Go somewhere</a>'+
+        '<img src="static/assets/img/img.png" alt="Italian Trulli" style="width:6rem;position:absolute;bottom:4rem;right:1rem">'+
+        '<h5 class="card-title">Sabaton - The Tour To End All Tours</h5>' +
+        '<p class="card-text">Barclays Arena - Hamburg</p>'+
+        '<p class="card-text">Tue 19:00 2022</p>'+
+        '<a href="https://www.eventim.de/event/sabaton-the-tour-to-end-all-tours-2022-barclays-arena-13883477/?affiliate=GMD&includeOnlybookable=true&gclid=CjwKCAjwj8eJBhA5EiwAg3z0m79R9loJjkKc8IhEswPFbPZ4wV50iJSKIIkWFMgZ8AzVNosxDADHZBoCHewQAvD_BwE" class="btn btn-primary">Event Page</a>'+
+        '<p></p>'+
         '</div>'+
         '<div class="card-footer">'+
-        'This is card footer'+
-        '</div></div>';
-        <!-- ============= Geo Localization ======== -->
+            '<div class="appBottomMenu">'+
+         '<a href="#" class="item" onclick="promptMe()">'+
+            '<div class="col">'+
+                '<ion-icon name="heart-outline"></ion-icon>'+
+            '</div>'+
+        '</a>'+
+         '<a href="/find_group" class="item">'+
+            '<div class="col">'+
+                '<ion-icon name="people-outline"></ion-icon>'+
+            '</div>'+
+        '</a>'+
+          '<a href="/share" class="item">'+
+            '<div class="col">'+
+                '<ion-icon name="share-outline"></ion-icon>'+
+            '</div>'+
+        '</a>'+
+        '</div></div></div>';
+
+        function promptMe(){
+            alert("Added to favorites");
+        }
+
         function ipLookUp () {
           $.ajax('http://ip-api.com/json')
           .then(

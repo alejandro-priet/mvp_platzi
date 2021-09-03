@@ -46,13 +46,33 @@ db.init_app(app)
 
 EMAIL_REGEX = re.compile(r"[^@]+@[^@]+\.[^@]+")
 
-with app.app_context():
-    db.create_all()
+categories_array = ['sport', 'music', 'food', 'education', 'digital']
+
+
+# this executes itself before redirecting to first view
+@app.before_first_request
+def create_db():
+    # with the context of the app we processed to create all the models in models.py
+    with app.app_context():
+        db.create_all()
+        # we ask if the table category has a row calls sport to proof if there is loaded data
+        if db.session.query(Category.categoryID).filter_by(categoryname='sport').first() is not None:
+            return
+        else:
+            # if not, we load all the categories
+            db.session.add_all([
+                Category(categoryname='sport'),
+                Category(categoryname='music'),
+                Category(categoryname='food'),
+                Category(categoryname='education'),
+                Category(categoryname='digital')])
+            db.session.commit()
 
 
 @app.route('/')
 @login_required
 def mmap():
+    # we load the username session to the username Variable and pass it to the html file
     username = session['username']
     return render_template('map.html', username=username)
 
@@ -60,6 +80,7 @@ def mmap():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        # we load all the data from the form
         username = request.form.get("username")
         password = request.form.get("password")
         email = request.form.get("email")
@@ -149,11 +170,40 @@ def category_selection():
 @login_required
 def selected_successfully():
     if request.method == 'POST':
+        selected_categories = []
+        username = session['username']
+        user = db.session.query(Person).filter(Person.username == username).all()
         if request.form.get('sport') is not None:
-            # Todo: set array of multiple category selections and send it to database in a query (maybe a for or direct an array)
+            selected_categories.append('sport')
+        if request.form.get('music') is not None:
+            selected_categories.append('music')
+        if request.form.get('education') is not None:
+            selected_categories.append('education')
+        if request.form.get('food') is not None:
+            selected_categories.append('food')
+        if request.form.get('digital') is not None:
+            selected_categories.append('digital')
+        for selected in selected_categories:
+            # load into category the selected row and relate it with the user in a relationship table
+            category = db.session.query(Category).filter(Category.categoryname == selected).first()
+            category.users = user
+            db.session.commit()
+
         return redirect('/')
     else:
         return redirect('/category_selection')
+
+
+@app.route("/find_group")
+@login_required
+def find_group():
+    return render_template("find_group.html")
+
+
+@app.route("/share")
+@login_required
+def share():
+    return
 
 
 @app.route("/logout")
@@ -203,12 +253,6 @@ def add_event():
 @login_required
 def notifications():
     return render_template('notifications.html')
-
-
-@app.route('/sidebar')
-@login_required
-def sidebar():
-    return render_template('sidebar.html')
 
 
 if __name__ == '__main__':

@@ -1,12 +1,14 @@
 from helpers import login_required
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Flask, redirect, render_template, request, session
+from flask_share import Share
 from flask_session import Session
 from datetime import timedelta
 from models import *
 import re
 
 app = Flask(__name__)
+share = Share(app)
 
 ENV = 'development'
 
@@ -16,7 +18,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-app.permanent_session_lifetime = timedelta(minutes=5)
+app.permanent_session_lifetime = timedelta(minutes=20)
 Session(app)
 
 if ENV == 'development':
@@ -200,12 +202,6 @@ def find_group():
     return render_template("find_group.html")
 
 
-@app.route("/share")
-@login_required
-def share():
-    return
-
-
 @app.route("/logout")
 @login_required
 def logout():
@@ -256,4 +252,5 @@ def notifications():
 
 
 if __name__ == '__main__':
+    share.init_app(app)
     app.run()

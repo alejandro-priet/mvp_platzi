@@ -1,10 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Mobilekit Mobile UI Kit</title>
+    <meta name="description" content="Mobilekit HTML Mobile UI Kit">
+    <meta name="keywords" content="bootstrap 5, mobile template, cordova, phonegap, mobile, html" />
+    <link rel="icon" type="image/png" href="/static/assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
 </head>
+
 <body>
 
+    <!-- loader -->
+    <div id="loader">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader bg-primary text-light">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Event creation tool</div>
+        <div class="right"></div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+
+        <div class="section full mt-2 mb-2">
+            <div class="wide-block pt-2 pb-2">
+
+                <form class="needs-validation" novalidate>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="name5">Name</label>
+                            <input type="text" class="form-control" id="name5" placeholder="Enter the name of your event" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="address5">Name</label>
+                            <input type="text" class="form-control" id="address5" placeholder="Address or location" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please enter an Address.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="city5">Category</label>
+                            <select class="form-control custom-select" id="city5" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option value="1">Sport</option>
+                                <option value="2">Music</option>
+                                <option value="3">Food</option>
+                                <option value="3">Education</option>
+                                <option value="3">Digital</option>
+                            </select>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a category.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="description5">Name</label>
+                            <input type="text" class="form-control" id="description5" placeholder="Description" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please add a description.</div>
+                        </div>
+                    </div>
+
+                                        <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="date5">Name</label>
+                            <input type="text" class="form-control" id="date5" placeholder="Date" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please add a description.</div>
+                        </div>
+                    </div>
+
+                                        <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="pricerange5">Name</label>
+                            <input type="text" class="form-control" id="pricerange5" placeholder="Estimated price" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please add a description.</div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mt-2">
+                        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="/" class="item">
+            <div class="col">
+                <ion-icon name="home-outline"></ion-icon>
+            </div>
+        </a>
+        <a href="/discover" class="item">
+            <div class="col">
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+        </a>
+        <a href="/add_event" class="item">
+            <div class="col">
+                <ion-icon name="add-circle-outline"></ion-icon>
+            </div>
+        </a>
+        <a href="/notifications" class="item">
+            <div class="col">
+                <ion-icon name="notifications-outline"></ion-icon>
+                <span class="badge badge-danger">5</span>
+            </div>
+        </a>
+        <a href="/profile" class="item">
+            <div class="col">
+                <ion-icon name="person-outline"></ion-icon>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- ============== Js Files ==============  -->
+    <!-- Bootstrap -->
+    <script src="/static/assets/js/lib/bootstrap.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="/static/assets/js/plugins/splide/splide.min.js"></script>
+    <!-- ProgressBar js -->
+    <script src="/static/assets/js/plugins/progressbar-js/progressbar.min.js"></script>
+    <!-- Base Js File -->
+    <script src="/static/assets/js/base.js"></script>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+
 </body>
+
 </html>

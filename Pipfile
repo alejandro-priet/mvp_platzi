@@ -12,6 +12,7 @@ gunicorn = "*"
 flask-script-extras = "*"
 flask-migrate = "*"
 flask-session = "*"
+flask-share = "*"
 
 [dev-packages]
 

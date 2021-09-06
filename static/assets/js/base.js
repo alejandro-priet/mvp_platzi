@@ -671,6 +671,10 @@ multiListview.forEach(function (el) {
 
 //-----------------------------------------------------------------------
 // Add to Home
+function share(){
+    var modal = new bootstrap.Modal(document.getElementById('share_event'))
+    modal.toggle()
+}
 function iosAddtoHome() {
     var modal = new bootstrap.Modal(document.getElementById('ios-add-to-home-screen'))
     modal.toggle()

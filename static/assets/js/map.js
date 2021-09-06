@@ -13,7 +13,7 @@
         '</div>'+
         '<div class="card-footer">'+
             '<div class="appBottomMenu">'+
-         '<a href="#" class="item" onclick="promptMe()">'+
+         '<a href="#" class="item" onclick="prompt_like()">'+
             '<div class="col">'+
                 '<ion-icon name="heart-outline"></ion-icon>'+
             '</div>'+
@@ -23,14 +23,14 @@
                 '<ion-icon name="people-outline"></ion-icon>'+
             '</div>'+
         '</a>'+
-          '<a href="/share" class="item">'+
-            '<div class="col">'+
-                '<ion-icon name="share-outline"></ion-icon>'+
-            '</div>'+
-        '</a>'+
+          //'<a href="#" class="item" data-bs-toggle="modal" data-bs-target="#PanelRight">'+
+          //  '<div class="col">'+
+           //     '<ion-icon name="share-outline"></ion-icon>'+
+           // '</div>'+
+        //'</a>'+
         '</div></div></div>';
 
-        function promptMe(){
+        function prompt_like(){
             alert("Added to favorites");
         }
 
